@@ -13,17 +13,17 @@ import argparse
 import json
 import os
 import pickle
-from datetime import datetime
+# from datetime import datetime
 
 import numpy as np
 import pandas as pd
 from joblib import Parallel, delayed
 from sklearn.decomposition import PCA
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import make_scorer
-from sklearn.model_selection import StratifiedKFold, cross_validate
-from sklearn.multiclass import OneVsRestClassifier
-from sklearn.pipeline import Pipeline
+# from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
+# from sklearn.model_selection import StratifiedKFold, cross_validate
+# from sklearn.multiclass import OneVsRestClassifier
+# from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import LinearSVC
 from tqdm import tqdm

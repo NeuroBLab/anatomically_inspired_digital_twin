@@ -1,7 +1,3 @@
-"""
-This module provides a convolutional Gated Recurrent Unit (GRU) for processing
-sequential data in a neural network.
-"""
 import torch
 import torch.nn.init as init
 from torch import nn

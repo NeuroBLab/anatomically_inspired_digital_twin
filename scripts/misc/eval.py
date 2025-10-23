@@ -223,7 +223,7 @@ def main(args):
         )
         input_stats = compute_stats(stats_dataloader, args.normalize)
 
-    summary._add_dataset_info(neurons_idxs, input_stats)
+    summary.add_dataset_info(neurons_idxs, input_stats)
 
     model_dataloader = get_loader(
         args,
@@ -235,8 +235,8 @@ def main(args):
         neurons_subset=neurons_idxs,
     )
 
-    summary._add_training_info(args)
-    summary._add_dataloader_info(model_dataloader)
+    summary.add_training_info(args)
+    summary.add_dataloader_info(model_dataloader)
 
     model = build_model(
         args,
@@ -279,7 +279,7 @@ def main(args):
         print("Model restored successfully from checkpoint.")
 
     if args.add_readout_info:
-        summary._add_readout_info(model)
+        summary.add_readout_info(model)
 
     # --- Performance Evaluation ---
     print("\nEvaluating validation performance...")
@@ -295,7 +295,7 @@ def main(args):
         use_amp=args.use_amp,
         minibatch_frames=args.minibatch_frames,
     )
-    summary._add_results_data(val_performance, "val")
+    summary.add_results(val_performance, "val")
 
     print("\nEvaluating test performance...")
     test_performance = eval_model_performance(
@@ -310,7 +310,7 @@ def main(args):
         use_amp=args.use_amp,
         minibatch_frames=args.minibatch_frames,
     )
-    summary._add_results_data(test_performance, "test")
+    summary.add_results(test_performance, "test")
 
     if args.eval_train:
         print("\nEvaluating train performance...")
@@ -326,7 +326,7 @@ def main(args):
             use_amp=args.use_amp,
             minibatch_frames=args.minibatch_frames,
         )
-        summary._add_results_data(train_performance, "train")
+        summary.add_results(train_performance, "train")
 
     # --- Save Results ---
     output_path = os.path.join("save", "results", args.model_name)

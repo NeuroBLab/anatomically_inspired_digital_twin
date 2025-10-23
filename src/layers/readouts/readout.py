@@ -1,7 +1,3 @@
-"""
-This module provides readout classes for neural network models, including
-a factory for different readout types and a multi-readout manager.
-"""
 import torch
 from neuralpredictors.layers.readouts.base import ClonedReadout
 

@@ -1,12 +1,7 @@
-"""
-This module provides a multi-layer perceptron (MLP) shifter for neural
-network models, including initialization and regularization methods.
-"""
 import torch
 from torch import nn
 import torch.nn.init as init
 from neuralpredictors.layers.shifters.base import Shifter
-
 
 class MLP(Shifter):
     """

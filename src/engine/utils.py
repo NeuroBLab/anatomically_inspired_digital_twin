@@ -1,6 +1,5 @@
 import numpy as np
 
-
 def get_io_dims(data_loader):
     """Gets the input/output dimensions from a PyTorch DataLoader.
 

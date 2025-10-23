@@ -1,7 +1,3 @@
-"""
-Evaluates the performance of a pre-trained FNN model from Wang et al. (2025) on the Microns dataset.
-"""
-
 import argparse
 import os
 
@@ -172,34 +168,33 @@ def main(args):
         input_stats
     )
     loader = loader.load(model_paths['microns30'])
-    summary._add_dataloader_info(loader)
+    summary.add_dataloader_info(loader)
 
-    if args.input_data == 'microns30':
-        print("\nEvaluating validation performance...")
-        val_performance = eval_model_performance(
-            loader,
-            'val',
-            eval_repeated=True,
-            frames=args.frames - args.skip,
-            skip=args.skip,
-            inference=args.inference,
-            save_responses=args.save_responses,
-            use_amp=args.use_amp,
-        )
-        summary._add_results_data(val_performance, 'val')
+    print("\nEvaluating validation performance...")
+    val_performance = eval_model_performance(
+        loader,
+        'val',
+        eval_repeated=True,
+        frames=args.frames - args.skip,
+        skip=args.skip,
+        inference=args.inference,
+        save_responses=args.save_responses,
+        use_amp=args.use_amp,
+    )
+    summary.add_results(val_performance, 'val')
 
-        print("\nEvaluating test performance...")
-        test_performance = eval_model_performance(
-            loader,
-            'test',
-            eval_repeated=False,
-            frames=args.frames - args.skip,
-            skip=args.skip,
-            inference=args.inference,
-            save_responses=args.save_responses,
-            use_amp=args.use_amp,
-        )
-        summary._add_results_data(test_performance, 'test')
+    print("\nEvaluating test performance...")
+    test_performance = eval_model_performance(
+        loader,
+        'test',
+        eval_repeated=False,
+        frames=args.frames - args.skip,
+        skip=args.skip,
+        inference=args.inference,
+        save_responses=args.save_responses,
+        use_amp=args.use_amp,
+    )
+    summary.add_results(test_performance, 'test')
 
     path = os.path.join('save', 'results', args.model_name)
     os.makedirs(path, exist_ok=True)

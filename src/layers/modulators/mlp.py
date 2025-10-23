@@ -1,7 +1,3 @@
-"""
-This module provides MLP-based modulators for incorporating behavioral data
-into neural network models.
-"""
 from typing import List, Union
 
 import torch

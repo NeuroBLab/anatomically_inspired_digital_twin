@@ -2,13 +2,10 @@ import json
 import os
 from shutil import rmtree
 
-import torch
-
-from src.layers.encoder import ResNet50Encoder
 from src.engine.build import build_model
 from src.data.loaders import get_loader
 from src.data.utils import compute_stats, extract_neurons_subset
-from src.engine.training import Trainer, TwoPartTrainer
+from src.engine.training import Trainer
 from scripts.utils import create_data_paths, set_random_seed
 from train_args import get_parser
 
@@ -146,52 +143,31 @@ def main(args):
         )
 
         # --- Build model ---
-        if args.resnet:
-            model = ResNet50Encoder(
-                args, dataloaders, layer_hook=args.layer_hook
-            )
-            model.to(args.device)
-            print(model)
-            print(
-                "Total number of parameters: ",
-                sum(p.numel() for p in model.parameters() if p.requires_grad),
-            )
-        else:
-            model = build_model(
-                args,
-                dataloaders,
-                layer=args.layer,
-                brain_area=args.brain_area,
-            )
+        model = build_model(
+            args,
+            dataloaders,
+            layer=args.layer,
+            brain_area=args.brain_area,
+        )
 
         # --- Initialize trainer ---
-        if not args.two_part_model:
-            trainer = Trainer(
-                args,
-                loss_name=args.loss,
-                epoch_loss_name=args.epoch_loss,
-                eval_metric=args.eval_metric,
-                eval_mode=args.eval_mode,
-                avg_loss=args.avg_loss,
-                neuron_norm=args.neuron_norm,
-                use_wandb=args.use_wandb,
-                wandb_username="darioliscai",
-                val_loader_name="val",
-                regularize=args.regularize,
-                input_stats=input_stats,
-                directions=directions,
-                singular_values=singular_values,
-                neuron_idxs=neurons_idxs,
-            )
-        else:
-            trainer = TwoPartTrainer(
-                args,
-                loss_name=args.loss,
-                use_wandb=args.use_wandb,
-                wandb_username="darioliscai",
-                val_loader_name="val",
-                regularize=args.regularize,
-            )
+        trainer = Trainer(
+            args,
+            loss_name=args.loss,
+            epoch_loss_name=args.epoch_loss,
+            eval_metric=args.eval_metric,
+            eval_mode=args.eval_mode,
+            avg_loss=args.avg_loss,
+            neuron_norm=args.neuron_norm,
+            use_wandb=args.use_wandb,
+            wandb_username="darioliscai",
+            val_loader_name="val",
+            regularize=args.regularize,
+            input_stats=input_stats,
+            directions=directions,
+            singular_values=singular_values,
+            neuron_idxs=neurons_idxs,
+        )
 
         # --- Start training ---
         print("Starting training procedure...")

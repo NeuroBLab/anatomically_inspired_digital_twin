@@ -3,7 +3,7 @@ import torch
 from torch import nn
 from neuralpredictors.layers.readouts.base import Readout
 
-from .readout import register
+from src.layers.readouts.readout import register
 
 
 @register("factorized")

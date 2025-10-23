@@ -2,7 +2,6 @@ import argparse
 import ast
 import sys
 
-
 def get_parser(allow_missing_required=False):
     """Constructs the argument parser for the training script.
 
@@ -459,17 +458,6 @@ def get_parser(allow_missing_required=False):
         parser.add_argument("--init_gaussian", action="store_true")
         if temp_args.readout == "gaussian":
             parser.add_argument("--num_samples", type=int, default=1)
-
-    if temp_args.readout == "rank1_decomposed":
-        parser.add_argument("--disable_grid_predictor", action="store_true")
-        parser.add_argument("--positive_weights", type=int, default=1, choices=[0, 1])
-        parser.add_argument("--readout_reg_weight", type=float, default=0.0076)
-        parser.add_argument("--dispersion_reg", type=float, default=0)
-        parser.add_argument("--mean_activity", type=float, default=None)
-        parser.add_argument("--readout_bias", type=int, default=0, choices=[0, 1])
-        parser.add_argument("--num_samples", type=int, default=1)
-        parser.add_argument("--regularize_per_layer", action="store_true")
-        parser.add_argument("--init_gaussian", action="store_true")
 
     parser.add_argument(
         "--brain_area_to_layer",

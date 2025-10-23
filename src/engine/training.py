@@ -9,10 +9,10 @@ import torch
 import wandb
 from torch import nn
 from tqdm import tqdm
+from neuralpredictors.training import LongCycler
 
 from src import metrics as measures
 from src.engine.scheduler import Scheduler
-from neuralpredictors.training import LongCycler
 
 class Trainer:
     """

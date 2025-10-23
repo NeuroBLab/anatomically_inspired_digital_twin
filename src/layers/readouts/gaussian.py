@@ -8,7 +8,7 @@ from torch.nn import functional as F
 from torch.nn.parameter import Parameter
 from neuralpredictors.layers.readouts.base import ConfigurationError, Readout
 
-from .readout import register
+from src.layers.readouts.readout import register
 
 
 @register("gaussian")

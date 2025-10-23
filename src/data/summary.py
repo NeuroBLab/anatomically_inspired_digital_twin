@@ -1,8 +1,6 @@
 import json
 import pickle
-
 import numpy as np
-
 
 class Summary:
     """Manages the collection and serialization of experiment information.

@@ -1,7 +1,6 @@
 import torch
 import torch.nn as nn
 
-
 class Exp(nn.Module):
     """Applies the element-wise exponential function."""
 

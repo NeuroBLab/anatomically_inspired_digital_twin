@@ -17,7 +17,6 @@ import numpy as np
 import torch
 from tqdm import tqdm
 
-from src.layers.encoder import ResNet50Encoder
 from src.engine.build import build_model
 from src.data.utils import compute_stats, extract_neurons_subset
 from src.data.loaders import get_loader
@@ -127,12 +126,9 @@ def main(args):
     )
 
     # --- Model construction ---
-    if args.resnet:
-        model = ResNet50Encoder(args, model_dataloader, layer_hook=args.layer_hook)
-    else:
-        model = build_model(
-            args, model_dataloader, layer=args.layer, brain_area=args.brain_area
-        )
+    model = build_model(
+        args, model_dataloader, layer=args.layer, brain_area=args.brain_area
+    )
     model.to(args.device)
     print(f"Model built with {sum(p.numel() for p in model.parameters() if p.requires_grad)} trainable parameters.")
 
