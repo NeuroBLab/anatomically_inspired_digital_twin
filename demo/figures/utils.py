@@ -18,13 +18,14 @@ def load_summary(selected_names, metric="CCnorm", agg="median"):
         model_name: {} for model_name in MODEL_MAPPINGS.values() if model_name in selected_names
     }
     for model, model_name in MODEL_MAPPINGS.items():
+        filename = "summary.pkl"
         if model == 'towards_wang':
-            model = 'towards_wang_behavior'
+            filename = 'summary_behavior.pkl'
         if model_name not in selected_names:
             continue
         else:
             print(f'Loading {model} summary...')
-        path_summary = os.path.join('save', 'results', model, 'summary.pkl')
+        path_summary = os.path.join('save', 'results', model, filename)
         with open(path_summary, 'rb') as f:
             data = pickle.load(f)
 
@@ -76,7 +77,7 @@ def load_hoeller(model_names):
     for model, model_name in MODEL_MAPPINGS.items():
         if model_name not in model_names:
             continue
-        path_hoeller = os.path.join('save', 'data', 'hoeller', 'results', model + '_seed1088_14sess.json')
+        path_hoeller = os.path.join('save', 'results', model, 'hoeller.json')
         with open(path_hoeller, 'rb') as f:
             data = json.load(f)
         hoeller[model_name][model] = data
@@ -90,7 +91,7 @@ def load_froudarakis(model_names):
     for model, model_name in MODEL_MAPPINGS.items():
         if model_name not in model_names:
             continue
-        path_froudarakis = os.path.join('save', 'data', 'froudarakis', 'results', model + '_128_0.3_50.json')
+        path_froudarakis = os.path.join('save', 'results', model, 'froudarakis.json')
         with open(path_froudarakis, 'rb') as f:
             data = json.load(f)
         froudarakis[model_name][model] = data

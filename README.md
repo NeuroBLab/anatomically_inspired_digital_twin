@@ -82,12 +82,25 @@ Otherwise, you can directly download the results shown in the paper by running:
 python utils/download_results.py
 ```
 ## Results
+Anatomically inspired hierarchical readouts provide an inductive bias that captures functional hierarchy at single-neuron and population levels.
 
 <p align="center">
 <img src="./images/results.png" width="90%"></img>
 </p>
 
-
 ## Citation
 If you find this work useful in your research, please consider citing:
 
+```
+@inproceedings{
+  luconi2025anatomicallyinspireddt,
+  title     = {Anatomically inspired digital twins capture hierarchical object representations in visual cortex},
+  author    = {Luconi, Emanuele and Liscai, Dario and Baldassi, Carlo and Vargas, Alessandro Marin and Sanzeni, Alessandro},
+  booktitle = {Advances in Neural Information Processing Systems},
+  volume    = {39},
+  year      = {2025},
+  url       = {https://openreview.net/forum?id=9DbkBqvuCI}
+}
+```
+
+Questions or suggestions? Feel free to contact `alessandro.sanzeni@unibocconi.it`

@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 REPO_ID = "NeuroBLab/anatomically_inspired_digital_twin_models"
 FILENAME = "selected_models.zip"
-TARGET_DIR = "data/models"
+TARGET_DIR = "save/models"
 
 def download_and_extract_from_hub(
     repo_id: str,

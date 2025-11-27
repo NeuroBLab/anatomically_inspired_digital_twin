@@ -3,6 +3,7 @@ import os
 from tqdm import tqdm
 
 def main():
+    print("Building white noise dataset for Artificial Receptive Field generation.")
     # Set random seed
     np.random.seed(42)
 

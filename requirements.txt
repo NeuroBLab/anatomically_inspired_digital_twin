@@ -21,3 +21,4 @@ seaborn==0.13.2
 fnn@git+https://github.com/cajal/fnn.git@main
 huggingface-hub==0.36.0
 hf_xet==1.1.10
+SciencePlots==2.2.0
