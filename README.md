@@ -4,7 +4,7 @@ Emanuele Luconi, Dario Liscai, Carlo Baldassi, Alessandro Marin Vargas, Alessand
 
 ---
 
-This repository is the official implementation of [Anatomically inspired digital twins capture hierarchical object representations in visual cortex](https://arxiv.org/abs/2030.12345). 
+This repository is the official implementation of [Anatomically inspired digital twins capture hierarchical object representations in visual cortex](https://openreview.net/forum?id=9DbkBqvuCI). 
 
 <p align="center">
 <img src="./images/overview.png" width="90%"></img>
